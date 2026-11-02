@@ -1,0 +1,178 @@
+{
+  "base_url": "https://www.rexk12.ai",
+  "report_title": "Rex Student endpoint Report",
+  "report_subtitle": "Performance testing for REX Student endpoints",
+  "tokens": [
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTk1MjgxMjkzOTMxODlmYjYwYmE1MSIsIm5hbWUiOiJSaXNoaSBEYWthIiwiZW1haWwiOiJyaXNoaUByZXguY29tIiwic2Nob29sTmFtZSI6IjY2YmI0Nzk1NzEyMzkxYmU5Mzg0OWRiYiIsInNjaG9vbElkIjoiNjZiYjQ3OTU3MTIzOTFiZTkzODQ5ZGJiIiwic3RhdHVzIjoiQUNUSVZFIiwidHlwZSI6IlRFQUNIRVIiLCJkaXN0cmljdElkIjoiNjZiYjQ3NTc3MTIzOTFiZTkzODQ5ZDljIiwiaWF0IjoxNzU0MzA2MTE2LCJleHAiOjE3NTY4OTgxMTZ9.GHrkCxfV1dE3MkOlUJIg6nwIawnrzZ38EGolfJIypIc",
+      "name": "TEACHER_TOKEN"
+    },
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTRkMjc0NmFlMzRkODQ0YmZhNjA3NyIsIm5hbWUiOiJVZGRpcGFuIiwiZW1haWwiOiJ1ZGRpcGFuQGdtYWlsLmNvbSIsInN0YXR1cyI6IkFDVElWRSIsInR5cGUiOiJTVVBFUi1BRE1JTiIsImlhdCI6MTc1NDI5NTQyNCwiZXhwIjoxNzU2ODg3NDI0fQ.ViV88mgP1_OXH448wurJ14UNrrqXOcYYEaILRlhSNEA",
+      "name": "ADMIN_TOKEN"
+    },
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NmU4Y2ZhYjhhZWY4NzY3MTJlZTFlOSIsImVtYWlsIjoiZGVtb3N0dWRlbnRAcmV4LmNvbSIsIm5hbWUiOiJTdHVkZW50IERlbW9vb29vIiwiZ3JhZGVJZCI6IjY2OTYwMjJhMDczMjdiMGIwNTdhODUyNyIsInNlY3Rpb24iOiI2N2M2ZmU1MzQxMzVkODZhNThmNmIwOTciLCJzY2hvb2wiOiI2NzZlOGNkY2I4YWVmODc2NzEyZWUxYzUiLCJkaXN0cmljdCI6IjY3NmU4Y2E4YjhhZWY4NzY3MTJlZTFhMiIsInN0YXR1cyI6IkFDVElWRSIsImdyYWRlIjoiR3JhZGUgMTIiLCJpYXQiOjE3NTU3Njc0MDcsImV4cCI6MTc1NjM3MjIwN30.X12W_JzlGRskdM2UOC7AK54-A3dQMbSMLPGdtOP4_tQ",
+      "name": "STUDENT_TOKEN"
+    }
+  ],
+  "endpoints": [
+    {
+      "name": "MY COURSES",
+      "description": "Get student's courses",
+      "method": "GET",
+      "url": "/student/api/v1/student/mycourses/get",
+      "body": null,
+      "headers": {
+        "Authorization": "<STUDENT_TOKEN>",
+        "Content-Type": "application/json"
+      },
+      "weight": 1,
+      "thinkTime": {
+        "min": 1,
+        "max": 4
+      },
+      "threshold_ms": 1500
+    },
+    {
+      "name": "COURSE BY ID",
+      "description": "Get specific student details",
+      "method": "GET",
+      "url": "/student/api/v1/student/course/get/6856dc5a8781da5204ec0852",
+      "body": null,
+      "headers": {
+        "Authorization": "<STUDENT_TOKEN>",
+        "Content-Type": "application/json"
+      },
+      "weight": 10,
+      "thinkTime": {
+        "min": 2,
+        "max": 6
+      },
+      "threshold_ms": 1500
+    },
+    {
+      "name": "NOTIFICATIONS",
+      "description": "Get all notifications",
+      "method": "GET",
+      "url": "/student/api/v1/student/notification/received",
+      "body": null,
+      "headers": {
+        "Authorization": "<STUDENT_TOKEN>",
+        "Content-Type": "application/json"
+      },
+      "weight": 10,
+      "thinkTime": {
+        "min": 2,
+        "max": 5
+      },
+      "threshold_ms": 2500
+    },
+    {
+      "name": "ANALYTICS",
+      "description": "Get student's analytics",
+      "method": "GET",
+      "url": "/student/api/v1/student/analytic/course/6856dc5a8781da5204ec0852",
+      "body": null,
+      "headers": {
+        "Authorization": "<STUDENT_TOKEN>",
+        "Content-Type": "application/json"
+      },
+      "weight": 2,
+      "thinkTime": {
+        "min": 1.5,
+        "max": 4
+      },
+      "threshold_ms": 5000
+    },
+    {
+      "name": "GET SCHEDULE CLASSES",
+      "description": "Get schedule classes",
+      "method": "POST",
+      "url": "/student/api/v1/student/schedule",
+      "body": {
+        "gradeId": "6696022a07327b0b057a8527",
+        "sectionId": "67c6fe534135d86a58f6b097",
+        "date": "2025-08-25"
+      },
+      "headers": {
+        "Authorization": "<STUDENT_TOKEN>",
+        "Content-Type": "application/json"
+      },
+      "weight": 1,
+      "thinkTime": {
+        "min": 1.5,
+        "max": 4
+      },
+      "threshold_ms": 5000
+    },
+    {
+      "name": "LEADERBOARD",
+      "description": "Get leaderboard",
+      "method": "GET",
+      "url": "/student/api/v1/student/leaderboard/get",
+      "body": null,
+      "headers": {
+        "Authorization": "<STUDENT_TOKEN>",
+        "Content-Type": "application/json"
+      },
+      "weight": 10,
+      "thinkTime": {
+        "min": 1,
+        "max": 3
+      },
+      "threshold_ms": 2000
+    },
+    {
+      "name": "STUDENT COURSE PROGRESS",
+      "description": "Get student's course progress",
+      "method": "GET",
+      "url": "/student/api/v1/student/progress/get/6856dc5a8781da5204ec0852",
+      "body": null,
+      "headers": {
+        "Authorization": "<STUDENT_TOKEN>",
+        "Content-Type": "application/json"
+      },
+      "weight": 8,
+      "thinkTime": {
+        "min": 1,
+        "max": 3
+      },
+      "threshold_ms": 2000
+    },
+    {
+      "name": "STUDENT SECTION PROGRESS",
+      "description": "Get student's section progress",
+      "method": "GET",
+      "url": "/student/api/v1/student/section/progress/6856dc5a8781da5204ec0852",
+      "body": null,
+      "headers": {
+        "Authorization": "<STUDENT_TOKEN>",
+        "Content-Type": "application/json"
+      },
+      "weight": 4,
+      "thinkTime": {
+        "min": 1,
+        "max": 3
+      },
+      "threshold_ms": 2000
+    },
+    {
+      "name": "STUDENT COURSE PROGRESS",
+      "description": "Get student's course progress",
+      "method": "GET",
+      "url": "/student/api/v1/student/course/progress/6856dc5a8781da5204ec0852",
+      "body": null,
+      "headers": {
+        "Authorization": "<STUDENT_TOKEN>",
+        "Content-Type": "application/json"
+      },
+      "weight": 4,
+      "thinkTime": {
+        "min": 1,
+        "max": 3
+      },
+      "threshold_ms": 2000
+    }
+  ]
+}
